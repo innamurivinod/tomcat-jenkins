@@ -30,7 +30,7 @@ setting tomcat username and password (manager-gui)
 ==================================================
 
 1. vim /root/weblogic/apache-tomcat-8.5.35/conf/tomcat-user.xml 
-=====================================================================
+====================
 -->
 <role rolename="manager-gui"/>
   <user username="tomcat" password="tomcat" roles="manager-gui"/>
@@ -42,11 +42,10 @@ setting tomcat username and password (manager-gui)
   <user username="role1" password="<must-be-changed>" roles="role1"/>
 -->
 
-======================================================================
+=========================
 
 2. vim /root/weblogic/apache-tomcat-8.5.35/webapps/manager/META-INF/context.xml (uncomment)
-
-================================================================
+==========================================
 -->
 <Context antiResourceLocking="false" privileged="true" >
 <!-- (uncomment)
@@ -55,7 +54,7 @@ setting tomcat username and password (manager-gui)
   <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
 -->
 </Context>
-====================================================================
+=======================================
 
 jenkins jar file download link:
 ===============================
