@@ -98,7 +98,9 @@ Enter key password for <tomcat>
 Re-enter new password:
 
               ===============================================================
+              
 Step 2: Geeting secure tomcat page with (https) modify (server.xml ) file .
+
 Vim /root/tomcat/apache-tomcat-8.5.35/conf/server.xml   (add  keystorefile , keystorepass )
 ===================================================================
 <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
