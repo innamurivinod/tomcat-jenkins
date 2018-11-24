@@ -52,9 +52,24 @@ setting tomcat username and password (manager-gui)
   <Valve className="org.apache.catalina.valves.RemoteAddrValve"
          allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
   <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
--->
+--> (uncomment)
 </Context>
 =======================================
+
+Tomcat ssl certification:
+------------------------
+Step 1: keytool –genkeypair  -alias mycert  -keyalng RSA –keystore  “e:\ssl\mycert.cert”
+                After run this command in cmd promt it will ask like this
+ 
+
+Step 2: Geeting secure tomcat page with (https) modify (server.xml ) file .
+            <Connector port="8443" protocol="org.apache.coyote.http11.Http11Protocol"
+               maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS"  keystore  “e:\ssl\mycert.cert”   
+keystorepass=”pass123” />
+step 3: we get like this
+            https://localhost:8080
+
 
 jenkins jar file download link:
 ===============================
