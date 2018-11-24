@@ -56,7 +56,7 @@ setting tomcat username and password (manager-gui)
 </Context>
 =======================================
 
-Tomcat ssl certification:
+Tomcat ssl certification: (windows)
 ------------------------
 Step 1: keytool –genkeypair  -alias mycert  -keyalng RSA –keystore  “e:\ssl\mycert.cert”
                 After run this command in cmd promt it will ask like this
@@ -69,6 +69,46 @@ Step 2: Geeting secure tomcat page with (https) modify (server.xml ) file .
 keystorepass=”pass123” />
 step 3: we get like this
             https://localhost:8080
+
+
+Tomcat ssl certification : (ubuntu 14.04)
+
+URL : https://www.youtube.com/watch?v=MguFSy0LS9c&pbjreload=10 (youtube)
+Step 1:    keytool -genkey -alias tomcat -keyalg RSA -keystore /root/tomcat/tomcat.cert
+               ==============================================================
+Enter keystore password:
+Re-enter new password:
+What is your first and last name?
+  [Unknown]:  vinod i
+What is the name of your organizational unit?
+  [Unknown]:  myorg
+What is the name of your organization?
+  [Unknown]:  org
+What is the name of your City or Locality?
+  [Unknown]:  mumbai
+What is the name of your State or Province?
+  [Unknown]:  pune
+What is the two-letter country code for this unit?
+  [Unknown]:  IN
+Is CN=vinod i, OU=myorg, O=org, L=mumbai, ST=pune, C=IN correct?
+  [no]:  y
+
+Enter key password for <tomcat>
+        (RETURN if same as keystore password):
+Re-enter new password:
+
+              ===============================================================
+Step 2: Geeting secure tomcat page with (https) modify (server.xml ) file .
+Vim /root/tomcat/apache-tomcat-8.5.35/conf/server.xml   (add  keystorefile , keystorepass )
+===================================================================
+<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true" keystoreFile="/root/tomcat/tomcat.cert" keystorePass="pass123">
+      <!--  <SSLHostConfig>
+            <Certificate certificateKeystoreFile="conf/localhost-rsa.jks"
+                         type="RSA" />
+        </SSLHostConfig> -->
+    </Connector>
+=========================================================================
 
 
 jenkins jar file download link:
